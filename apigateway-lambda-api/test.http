@@ -1,0 +1,85 @@
+######## ORDERS ########
+
+###
+# @name createOrder
+POST https://oqrmjkueoe.execute-api.eu-west-2.amazonaws.com/prod/orders HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+}
+
+###
+@id = {{createOrder.response.body.$.requestId}}
+
+###
+
+GET https://oqrmjkueoe.execute-api.eu-west-2.amazonaws.com/prod/orders/{{id}} HTTP/1.1
+content-type: application/json
+
+
+
+###
+
+GET https://oqrmjkueoe.execute-api.eu-west-2.amazonaws.com/prod/orders/ HTTP/1.1
+content-type: application/json
+
+
+###
+
+PUT https://oqrmjkueoe.execute-api.eu-west-2.amazonaws.com/prod/orders/{{id}} HTTP/1.1
+content-type: application/json
+
+{
+    "name": "accepted",
+}
+
+###
+
+DELETE https://oqrmjkueoe.execute-api.eu-west-2.amazonaws.com/prod/orders/{{id}} HTTP/1.1
+content-type: application/json
+
+
+
+######## PRODUCTS ########
+
+
+###
+# @name createProduct
+
+POST https://14jrzsd5q7.execute-api.eu-west-2.amazonaws.com/prod/products HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test product",
+}
+
+###
+@id = {{createProduct.response.body.$.requestId}}
+
+###
+
+GET https://14jrzsd5q7.execute-api.eu-west-2.amazonaws.com/prod/products/ HTTP/1.1
+content-type: application/json
+
+
+
+###
+
+GET https://14jrzsd5q7.execute-api.eu-west-2.amazonaws.com/prod/products/{{id}} HTTP/1.1
+content-type: application/json
+
+
+###
+
+PUT https://14jrzsd5q7.execute-api.eu-west-2.amazonaws.com/prod/products/{{id}} HTTP/1.1
+content-type: application/json
+
+{
+    "name": "altered product",
+}
+
+###
+
+DELETE https://14jrzsd5q7.execute-api.eu-west-2.amazonaws.com/prod/products/{{id}} HTTP/1.1
+content-type: application/json
