@@ -13,7 +13,7 @@ class App:
         self._db_input = None
 
     def _persist_record(self):
-        if not self._database.create_item(self._db_input):
+        if not self._database.update_item(self._db_input):
             raise Exception("Failed to persist order")
 
     def error_handled_workflow(self, event):
@@ -25,7 +25,7 @@ class App:
         except Exception as e:
             logger.info(f"Generic Workflow Error logReference=ERR0001 {e}")
             return {
-            "CreateOrderError": {
+            "SetOrderCompletedError": {
                 "order_id": self._db_input["pk"],
                 "status": "FAILED",
             }
@@ -35,7 +35,6 @@ class App:
         self._db_input = {
             "pk": self._body["order_id"],
             "sk": self._body["order_id"],
-            "email": self._body["email"],
             "order_status": "order_created",
             "date": str(time.time()),
         }
@@ -55,10 +54,9 @@ class App:
         self._convert_body_to_class()
         self._persist_record()
         return {
-            "CreateOrderResult": {
+            "SetOrderCompletedResult": {
                 "order_id": self._db_input["pk"],
-                "email": self._db_input["email"],
-                "order_status": "order_created",
+                "email": self._body["email"],
                 "status": "ok",
             }
         }

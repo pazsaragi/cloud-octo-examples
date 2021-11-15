@@ -36,6 +36,7 @@ export const lambdaFactory = (
         environment: {
           ...environment,
           TABLE: table?.tableName || "",
+          SERVICE_NAME: id
         },
         handler: handler || "handler",
         layers,
@@ -48,6 +49,7 @@ export const lambdaFactory = (
         environment: {
           ...environment,
           TABLE: table?.tableName || "",
+          SERVICE_NAME: id
         },
         layers,
       });

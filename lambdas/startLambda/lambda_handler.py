@@ -1,4 +1,3 @@
-import json
 from app import App
 from tracer import tracer
 from logger import logger
@@ -16,8 +15,7 @@ def handler(event, context):
     response = app.error_handled_workflow(wrapped_event)
 
     return {
-        "status_code": 200,
-        "body": response.body,
-        "headers": response.headers,
-        "base64_encoded": response.base64_encoded
+        "statusCode": 200,
+        'headers': {'Content-Type': 'application/json'},
+        'body': response.body
     }

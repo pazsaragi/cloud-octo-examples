@@ -38,6 +38,7 @@ class App(APIGatewayApplication):
             "order_id": str(uuid.uuid4()),
             "status": "order_created",
             "date": str(time.time()),
+            "email": "test@test.com"
         })
 
     def _event_workflow(self, event: APIGatewayProxyEvent):

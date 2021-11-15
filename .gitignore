@@ -8,3 +8,5 @@ terraform.tfstate*
 __pycache__
 
 node_modules
+
+*.secret
