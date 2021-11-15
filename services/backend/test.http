@@ -1,0 +1,41 @@
+
+###
+
+GET http://localhost:3000/health HTTP/1.1
+
+###
+
+POST http://localhost:3000/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test1234%",
+    "roles": ["admin"]
+}
+
+
+###
+# @name login
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test1234%"
+}
+
+###
+@accessToken = {{login.response.body.$.accessToken}}
+
+
+###
+
+POST http://localhost:3000/business/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "pk": "1234"
+}
+

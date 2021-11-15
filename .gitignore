@@ -1,1 +1,10 @@
 .env
+
+.terraform
+.terraform.lock*
+terraform.tfstate*
+.terraform.tfstate*
+
+__pycache__
+
+node_modules
