@@ -1,0 +1,3 @@
+name: event-sourcing-eventbridge
+runtime: nodejs
+description: An event sourcing eventbridge aws example
