@@ -9,6 +9,7 @@ from octo_aws_common.api_gateway_application import APIGatewayApplication
 from aws_lambda_powertools.event_handler.api_gateway import Response
 from aws_lambda_powertools.utilities.data_classes.api_gateway_proxy_event \
     import APIGatewayProxyEvent
+from config import VERIFIED_EMAIL
 from step_function import StepFunction
 
 
@@ -38,7 +39,7 @@ class App(APIGatewayApplication):
             "order_id": str(uuid.uuid4()),
             "status": "order_created",
             "date": str(time.time()),
-            "email": "test@test.com"
+            "email": VERIFIED_EMAIL
         })
 
     def _event_workflow(self, event: APIGatewayProxyEvent):

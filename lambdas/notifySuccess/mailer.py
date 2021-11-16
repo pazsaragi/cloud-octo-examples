@@ -9,14 +9,12 @@ BODY_TEXT = ("Amazon SES Test (Python)\r\n"
              "AWS SDK for Python (Boto)."
             )
 
-BODY_HTML = """<html>
+def email_template(order_id: str):
+    return f"""<html>
 <head></head>
 <body>
-  <h1>Amazon SES Test (SDK for Python)</h1>
-  <p>This email was sent with
-    <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-    <a href='https://aws.amazon.com/sdk-for-python/'>
-      AWS SDK for Python (Boto)</a>.</p>
+  <h1>Order Confirmation: {order_id}</h1>
+  <p>This is your order confirmation email.</p>
 </body>
 </html>
             """  
@@ -31,8 +29,10 @@ class Mailer:
     def get_client(self):
         return self._mailer
 
-    def send(self, email: str) -> bool:
+    def send(self, email: str, order_id: str) -> bool:
         try:
+            logger.info(f"Mailer input {email} logReference=MAIL11")
+
             self.get_client().send_email(
                     Source=SOURCE_EMAIL,
                     Destination={
@@ -41,10 +41,14 @@ class Mailer:
                         ]
                     },
                     Message={
+                        'Subject': {
+                            'Data': 'Order confirmation',
+                            'Charset': CHARSET
+                        },
                         'Body': {
                             'Html': {
                                 'Charset': CHARSET,
-                                'Data': BODY_HTML,
+                                'Data': email_template(order_id),
                             },
                             'Text': {
                                 'Charset': CHARSET,
@@ -52,7 +56,6 @@ class Mailer:
                             },
                         },
                     },
-                    ConfigurationSetName='ConfigSet'
             )
             logger.info("Mailer sent logReference=MAIL01")
 

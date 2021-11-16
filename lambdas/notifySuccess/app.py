@@ -17,7 +17,7 @@ class App:
         for record in self._context:
             print(record)
             message = json.loads(record["Sns"]["Message"])
-            if not self._mailer.send(message["context"]["email"]):
+            if not self._mailer.send(message["context"]["email"], message["context"]["order_id"]):
                 raise Exception("Failed to persist order")
 
     def error_handled_workflow(self, event):

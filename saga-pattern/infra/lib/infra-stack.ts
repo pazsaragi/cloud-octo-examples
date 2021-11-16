@@ -5,6 +5,7 @@ import * as sfn from "@aws-cdk/aws-stepfunctions";
 import * as apigateway from "@aws-cdk/aws-apigateway";
 import * as tasks from "@aws-cdk/aws-stepfunctions-tasks";
 import * as sns from "@aws-cdk/aws-sns";
+import * as iam from "@aws-cdk/aws-iam";
 import { lambdaFactory } from "./lambda-creator";
 import * as subscriptions from "@aws-cdk/aws-sns-subscriptions";
 
@@ -201,7 +202,12 @@ export class InfraStack extends cdk.Stack {
       },
     });
 
-    successTopic.addSubscription(new subscriptions.LambdaSubscription(notifySuccessLambda))
+    successTopic.addSubscription(new subscriptions.LambdaSubscription(notifySuccessLambda));
+    notifySuccessLambda.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['ses:SendEmail', 'SES:SendRawEmail'],
+      resources: ['*'],
+      effect: iam.Effect.ALLOW
+    }))
 
     // 6. order succeeded
     const orderSucceeded = new sfn.Succeed(this, "Your order has been placed!");
@@ -222,7 +228,8 @@ export class InfraStack extends cdk.Stack {
       "startLambda",
       "startLambda",
       {
-        STATE_MACHINE_ARN: saga.stateMachineArn
+        STATE_MACHINE_ARN: saga.stateMachineArn,
+        VERIFIED_EMAIL: process.env.SENDER_EMAIL || ""
       },
       true,
       undefined,
