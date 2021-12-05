@@ -1,0 +1,21 @@
+{
+    "name": "lambda-fns",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "build": "tsc"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.1035.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/node": "^16.11.10",
+        "@types/uuid": "^8.3.3",
+        "esbuild": "^0.13.15"
+    }
+}
