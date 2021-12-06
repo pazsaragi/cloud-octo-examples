@@ -1,0 +1,23 @@
+{
+    "Records": [
+      {
+        "messageId": "8e68f754-9167-4a3e-9aeb-459efb60b5cb",
+        "receiptHandle": "AQEBdgO0q4IKq9w+Q0XxU36dGpDtd+9II8I0kq3IV7Z20rsnYVopO3dck/no1vVBWwIFRyFQn1J4Sg1uWpVef9EFZDCmw0KrO7+hl1bH5MDfbYenv/cVo8NMkBawv6HMH2mxP6u3nHns6HKoOeqeo485szbFCtiMGFKTOLIPofn92KTDU5BvvQGRPTBUHZfXAEb3+tsFL36adhmIBHgs2eFdtOpJ67EtwmpAJ//IY617/m8DJEBk2w7VKXrkE9IaJ1VkMupXLsyhpA5Gibd9NmbwJA==",
+        "body": "{'name': 'my organisation', 'email': 'parulian.saragi@hotmail.com', 'ref': '6a1be30d-9b39-43c3-aeb1-98d1704e5b11', 'image': 'a', 'status': 1}",
+        "attributes": {
+          "ApproximateReceiveCount": "1",
+          "SentTimestamp": "1625818011278",
+          "SequenceNumber": "18862953484596720640",
+          "MessageGroupId": "fa8eaf85-8a01-4445-9987-b19332618e05",
+          "SenderId": "AROAVFPDOADPT62EZYBE6:DEV-CreateOrgMessageHandler",
+          "MessageDeduplicationId": "e47354e9c2d8276f28e7cc7f7709d8588a48d49dd11900c3246698beff3c5eba",
+          "ApproximateFirstReceiveTimestamp": "1625818011278"
+        },
+        "messageAttributes": {},
+        "md5OfBody": "1e893dcfe9d535217ad350c422335677",
+        "eventSource": "aws:sqs",
+        "eventSourceARN": "arn:aws:sqs:eu-west-2:355348644063:DEV-org.fifo",
+        "awsRegion": "eu-west-2"
+      }
+    ]
+  }

@@ -1,0 +1,8 @@
+{
+    "statusCode": 200,
+    "body": "{'Item': {'sk': 'menu#breakfast', 'is_active': false, 'pk': 'org#6e158d41-200e-4f2e-a494-33a18431bef9', 'name': 'breakfast', 'EntityType': 'menu'}, 'ResponseMetadata': {'RequestId': '4L2MFH9RKO67TGM61CQ6NB05QVVV4KQNSO5AEMVJF66Q9ASUAAJG', 'HTTPStatusCode': 200, 'HTTPHeaders': {'server': 'Server', 'date': 'Thu, 22 Jul 2021 13:59:53 GMT', 'content-type': 'application/x-amz-json-1.0', 'content-length': '170', 'connection': 'keep-alive', 'x-amzn-requestid': '4L2MFH9RKO67TGM61CQ6NB05QVVV4KQNSO5AEMVJF66Q9ASUAAJG', 'x-amz-crc32': '1053893367'}, 'RetryAttempts': 0}}",
+    "headers": {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
