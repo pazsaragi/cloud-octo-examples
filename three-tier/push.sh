@@ -9,6 +9,7 @@ set -e
 source_path="$1" # 1st argument from command line
 repository_url="$2" # 2nd argument from command line
 tag="${3:-latest}" # Checks if 3rd argument exists, if not, use "latest"
+account="$4"
 
 # splits string using '.' and picks 4th item
 region="$(echo "$repository_url" | cut -d. -f4)" 

@@ -19,3 +19,12 @@ variable "access_key" {
 variable "secret_key" {
   description = "AWS Secret Key"
 }
+
+variable "app_domain_name" {
+  default = "app.cloudocto.com"
+  description = "domain name (or application name if no domain name available)"
+}
+
+variable "root_domain_name" {
+  default = "cloudocto.com"
+}

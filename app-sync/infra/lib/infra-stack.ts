@@ -1,7 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as appsync from '@aws-cdk/aws-appsync';
 import * as dynamodb from '@aws-cdk/aws-dynamodb';
-import * as path from 'path';
 import * as lambda from '@aws-cdk/aws-lambda'
 import * as cognito from '@aws-cdk/aws-cognito'
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';

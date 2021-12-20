@@ -1,6 +1,14 @@
-# Cloud Octo Examples
+# 🌴 Cloud Octo Examples 🌴
 
-* A mono repo of architectural patterns implemented as cloud infrastructure
+> A mono repo of architectural patterns implemented as cloud infrastructure
+
+## Examples 🌱
+
+* [CQRS](cqrs/README.md)
+    - [AWS CDK](cqrs/aws-cdk/infrastructure/README.md) ✅
+    - TF ❌
+    - CDK TF ❌
+    - Pulumi ❌
 
 ## Projects
 
@@ -8,23 +16,25 @@
 * Event-sourcing with kinesis [x]
 * Event-sourcing with EventBridge []
 * Simple CRUD serverless Microservices [x]
-* Saga Pattern []
+* Saga Pattern [x]
 * Single Table Design [x]
+* graphql [x]
 * DynamoDB Single-Table Design sync'd to sql Database []
 * API Composition
 * Database per service
-* Serverless Everything
+* Serverless Everything 
 * Graph Database
 * Data Streaming
-* Fine-grained EC2 (ansible, config management)
+* Fine-grained EC2 (ansible, config management) []
 * Secrets
 * Transit Gateway
 * EKS
 * Kubernetes on EC2
 * AppMesh
 * Datalake
-* Three-tier architecture []
-* DynamoDB Dax
+* Three-tier architecture [x]
+* DynamoDB Dax []
+* WAF auditing log to Kinesis Data Firehose
 * LDAP
 * Kafka
 * RabbitMQ

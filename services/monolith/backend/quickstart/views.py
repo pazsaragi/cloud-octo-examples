@@ -2,6 +2,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from backend.quickstart.serializers import UserSerializer, GroupSerializer
+from rest_framework.response import Response
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,3 +21,11 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class HealthCheck(viewsets.ViewSet):
+    """
+    API endpoint that allows health check
+    """
+    def list(self, request):
+        return Response({'status': 'OK'})
