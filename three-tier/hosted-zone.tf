@@ -1,47 +1,60 @@
-################ Route53
-
 resource "aws_route53_zone" "main" {
-  name = "cloudocto.com"
+  name = var.root_domain_name
+
+  force_destroy = true
 }
 
-resource "aws_route53_record" "main-a-record" {
+resource "aws_route53_record" "root" {
   zone_id = aws_route53_zone.main.zone_id
-  name = "cloudocto.com"
-  type = "A"
+  name    = var.root_domain_name
+  type    = "A"
 
   alias {
-    name = "${aws_s3_bucket.bucket.website_domain}"
-    zone_id = "${aws_s3_bucket.bucket.hosted_zone_id}"
+    name    = aws_cloudfront_distribution.app_distribution.domain_name
+    zone_id    = aws_cloudfront_distribution.app_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
 
-################ DNS & ACM
+resource "aws_route53_record" "app" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = var.app_domain_name
+  type    = "A"
 
+  alias {
+    name    = aws_cloudfront_distribution.app_distribution.domain_name
+    zone_id    = aws_cloudfront_distribution.app_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "api" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = var.app_domain_name
+  type    = "A"
+
+  alias {
+    name    = aws.app_distribution.domain_name
+    zone_id    = aws_cloudfront_distribution.app_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+// Use the AWS Certificate Manager to create an SSL cert for our domain.
+// This resource won't be created until you receive the email verifying you
+// own the domain and you click on the confirmation link.
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "*.cloudocto.com"
-  validation_method = "DNS"
+  depends_on = [aws_route53_zone.main]
+  domain_name       = "${var.root_domain_name}"
+  validation_method = "EMAIL"
+  
+  subject_alternative_names = ["${var.app_domain_name}", "*.${var.root_domain_name}"]
 
   lifecycle {
     create_before_destroy = true
   }
 }
 
-
-resource "aws_route53_record" "main-c-name" {
-  zone_id = "${aws_route53_zone.main.zone_id}"
-  name = "app"
-  type = "CNAME"
-  ttl = "300"
-  records = ["cloudocto.com"]
-}
-
-resource "aws_acm_certificate" "cdn_cert" {
-  domain_name       = "*.cloudocto.com"
-  validation_method = "DNS"
-  provider = aws.acm_provider
-
-  lifecycle {
-    create_before_destroy = true
-  }
+resource "aws_acm_certificate_validation" "app" {
+  certificate_arn         = aws_acm_certificate.cert.arn
 }

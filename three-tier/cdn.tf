@@ -1,35 +1,48 @@
-################ Cloudfront
+resource "aws_cloudfront_origin_access_identity" "oai" {
+  comment = "access-identity-${var.app_domain_name}.s3.amazonaws.com"
+}
 
-resource "aws_cloudfront_distribution" "app_cdn" {
+locals {
+  s3_origin_id = "anythingCanGoHere"
+}
+
+resource "aws_cloudfront_distribution" "app_distribution" {
+  depends_on = [
+    aws_s3_bucket.app
+  ]
+
   origin {
-    domain_name = aws_s3_bucket.bucket.website_endpoint
-    origin_id = "S3-www.app.cloudocto"
+    domain_name = aws_s3_bucket.app.bucket_regional_domain_name
+    origin_id   = var.app_domain_name
 
-    custom_origin_config {
-      http_port = 80
-      https_port = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
     }
   }
-  
-  enabled = true
-  is_ipv6_enabled = true
+
+  enabled             = true
+  is_ipv6_enabled     = true
   default_root_object = "index.html"
+  comment             = "${var.app_domain_name} CDN"
 
-  aliases = ["app.cloudocto"]
+  aliases = [var.root_domain_name, var.app_domain_name]
 
-  custom_error_response {
-    error_caching_min_ttl = 0
-    error_code = 404
-    response_code = 200
-    response_page_path = "/404.html"
-  }
+  default_cache_behavior {
+    allowed_methods = [
+      "GET",
+      "HEAD",
+      "POST",
+      "OPTIONS",
+      "PUT",
+      "PATCH",
+      "DELETE"
+    ]
 
-    default_cache_behavior {
-    allowed_methods = ["GET", "HEAD"]
-    cached_methods = ["GET", "HEAD"]
-    target_origin_id = "S3-www.app.cloudocto"
+    cached_methods = [
+      "GET",
+      "HEAD",
+    ]
+
 
     forwarded_values {
       query_string = false
@@ -39,11 +52,11 @@ resource "aws_cloudfront_distribution" "app_cdn" {
       }
     }
 
+    target_origin_id = var.app_domain_name
     viewer_protocol_policy = "redirect-to-https"
-    min_ttl = 31536000
-    default_ttl = 31536000
-    max_ttl = 31536000
-    compress = true
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
   }
 
   restrictions {
@@ -53,8 +66,17 @@ resource "aws_cloudfront_distribution" "app_cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.cdn_cert.arn
-    ssl_support_method = "sni-only"
+      acm_certificate_arn      = aws_acm_certificate.cert.arn
+      ssl_support_method       = "sni-only"
+      minimum_protocol_version = "TLSv1"
   }
 
+  custom_error_response {
+    error_code            = 403
+    response_code         = 200
+    error_caching_min_ttl = 0
+    response_page_path    = "/"
+  }
+
+  wait_for_deployment = false
 }

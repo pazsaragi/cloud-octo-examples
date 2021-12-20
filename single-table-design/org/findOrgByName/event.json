@@ -1,0 +1,70 @@
+{
+    "resource": "/items/{id}", 
+    "path": "/items/d2f19e4d-45b6-4157-a180-a6c30438393f", 
+    "httpMethod": "GET", 
+    "headers": {
+        "Accept": "*/*", 
+        "Accept-Encoding": "gzip, deflate, br", 
+        "Authorization": "...", 
+        "CloudFront-Forwarded-Proto": "https", 
+        "CloudFront-Is-Desktop-Viewer": "true", 
+        "CloudFront-Is-Mobile-Viewer": "false", 
+        "CloudFront-Is-SmartTV-Viewer": "false", 
+        "CloudFront-Is-Tablet-Viewer": "false", 
+        "CloudFront-Viewer-Country": "GB", 
+        "Host": "ya69t2h7sa.execute-api.eu-west-2.amazonaws.com", 
+        "Postman-Token": "81268b62-8f5b-4ed0-99dc-1a8b449f778a", 
+        "User-Agent": "PostmanRuntime/7.28.0", 
+        "Via": "1.1 9f5ff683aec452b31d1779cfc240eb76.cloudfront.net (CloudFront)", 
+        "X-Amz-Cf-Id": "0wniYlHOPCj4-qbuXO4xkSeaSSBjm05eet0UPTQotRRX3X3hrSwK9Q==", 
+        "X-Amzn-Trace-Id": "Root=1-609fd64f-324901c20cc235257063492c", 
+        "X-Forwarded-For": "92.22.253.2, 64.252.166.78", 
+        "X-Forwarded-Port": "443", "X-Forwarded-Proto": "https"
+    }, 
+    "multiValueHeaders": {
+        "Accept": ["*/*"], 
+        "Accept-Encoding": ["gzip, deflate, br"], 
+        "Authorization": [
+            "Bearer ..----"
+        ], 
+        "CloudFront-Forwarded-Proto": ["https"], 
+        "CloudFront-Is-Desktop-Viewer": ["true"], 
+        "CloudFront-Is-Mobile-Viewer": ["false"], 
+        "CloudFront-Is-SmartTV-Viewer": ["false"], 
+        "CloudFront-Is-Tablet-Viewer": ["false"], 
+        "CloudFront-Viewer-Country": ["GB"], 
+        "Host": ["ya69t2h7sa.execute-api.eu-west-2.amazonaws.com"], 
+        "Postman-Token": ["81268b62-8f5b-4ed0-99dc-1a8b449f778a"], 
+        "User-Agent": ["PostmanRuntime/7.28.0"], 
+        "Via": ["1.1 9f5ff683aec452b31d1779cfc240eb76.cloudfront.net (CloudFront)"], 
+        "X-Amz-Cf-Id": ["0wniYlHOPCj4-qbuXO4xkSeaSSBjm05eet0UPTQotRRX3X3hrSwK9Q=="], 
+        "X-Amzn-Trace-Id": ["Root=1-609fd64f-324901c20cc235257063492c"], 
+        "X-Forwarded-For": ["92.22.253.2, 64.252.166.78"], 
+        "X-Forwarded-Port": ["443"], 
+        "X-Forwarded-Proto": ["https"]
+    }, 
+    "queryStringParameters": "None", 
+    "multiValueQueryStringParameters": "None",
+    "pathParameters": {"id": "d2f19e4d-45b6-4157-a180-a6c30438393f"}, 
+    "stageVariables": "None", 
+    "requestContext": {
+        "resourceId": "xmqs4p", 
+        "authorizer": {
+            "claims": {
+                "sub": "6014d69b-1b1c-4c28-9494-63cf7f8233c7", 
+                "email_verified": "true", 
+                "iss": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_gbDprs5Ob", 
+                "phone_number_verified": "false", 
+                "cognito:username": "parulian.saragi@hotmail.com", 
+                "aud": "35pg12e4k8nsdfffqrj4d6nlho", 
+                "event_id": "81c005d9-a40b-46fa-8a20-52322c7eec3e", "token_use": "id", 
+                "auth_time": "1621087804", "phone_number": "+4407950886632", 
+                "exp": "Sat May 15 15:10:04 UTC 2021", "iat": "Sat May 15 14:10:04 UTC 2021", 
+                "email": "parulian.saragi@hotmail.com"
+            }
+        }, 
+        "resourcePath": "/items/{id}", 
+        "httpMethod": "GET", "extendedRequestId": 
+        "fX5sbEVmLPEFSSg=", 
+        "requestTime": "15/May/2021:14:10:23 +0000", 
+        "path": "/prod/items/d2f19e4d-45b6-4157-a180-a6c30438393f", "accountId": "355348644063", "protocol": "HTTP/1.1", "stage": "prod", "domainPrefix": "ya69t2h7sa", "requestTimeEpoch": 1621087823484, "requestId": "fb3ebb8f-2cd9-4b98-b02b-2dd25c7d9c12", "identity": {"cognitoIdentityPoolId": "None", "accountId": "None", "cognitoIdentityId": "None", "caller": "None", "sourceIp": "92.22.253.2", "principalOrgId": "None", "accessKey": "None", "cognitoAuthenticationType": "None", "cognitoAuthenticationProvider": "None", "userArn": "None", "userAgent": "PostmanRuntime/7.28.0", "user": "None"}, "domainName": "ya69t2h7sa.execute-api.eu-west-2.amazonaws.com", "apiId": "ya69t2h7sa"}, "body": "None", "isBase64Encoded": false}

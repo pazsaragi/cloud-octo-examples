@@ -1,0 +1,20 @@
+{
+    "pk": {
+      "S": "ORG#139580gjasdgh89ty2t"
+    },
+    "sk": {
+      "S": "MENU#Breakfast"
+    },
+    "GSI1PK": {
+      "S": "ORG#139580gjasdgh89ty2t#MENU#Breakfast"
+    },
+    "IsActive": {
+      "BOOL": false
+    },
+    "MenuName": {
+      "S": "Breakfast"
+    },
+    "GSI1SK": {
+      "S": "MENU#Breakfast"
+    }
+  }

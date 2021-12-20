@@ -1,0 +1,24 @@
+	
+service: demo
+provider:
+  name: aws
+  runtime: rust
+plugins:
+  # this registers the plugin
+  # with serverless
+  - serverless-rust
+# creates one artifact for each function
+package:
+  individually: true
+functions:
+  test:
+    rust:
+      cargoFlags: '--features "serde-derive"'
+    # handler value syntax is `{cargo-package-name}.{bin-name}`
+    # or `{cargo-package-name}` for short when you are building a
+    # default bin for a given package.
+    handler: commandServiceRust
+    events:
+      - http:
+          path: /test
+          method: GET
