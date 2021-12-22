@@ -1,0 +1,3 @@
+name: event-sourcing-kinesis
+runtime: nodejs
+description: Event sourcing kinesis implementation.

@@ -1,11 +1,8 @@
 import * as cdk from '@aws-cdk/core';
-import { DynamoStack } from './dynamodb-stack';
-import * as lambda from '@aws-cdk/aws-lambda';
+import { DynamoStack } from '../../../cdk-constructs/dynamodb-stack';
 import * as apigateway from '@aws-cdk/aws-apigateway';
-import * as sqs from '@aws-cdk/aws-sqs';
 import * as kinesis from '@aws-cdk/aws-kinesis';
 import * as firehose from '@aws-cdk/aws-kinesisfirehose';
-import { DynamoEventSource, SqsDlq } from '@aws-cdk/aws-lambda-event-sources';
 import { LambdaStack } from './lambda-stack';
 import * as destinations from '@aws-cdk/aws-kinesisfirehose-destinations';
 import * as s3 from '@aws-cdk/aws-s3';

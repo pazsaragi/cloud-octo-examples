@@ -20,6 +20,7 @@
 * Single Table Design [x]
 * graphql [x]
 * DynamoDB Single-Table Design sync'd to sql Database []
+* mongodb atlas connected to resources in aws []
 * API Composition
 * Database per service
 * Serverless Everything 
